@@ -1,0 +1,31 @@
+{% extends "page.html" %}
+
+{%- block page_title -%}
+  <h1>
+    categories ∋ {{ "{" }}{{ term.name }}{{ "}" }}
+    ({{ term.pages | length }} post{{ term.pages | length | pluralize }})
+  </h1>
+{% endblock -%}
+
+{%- block page_content -%}
+  <ul>
+    {%- for page in term.pages -%}
+      <li class="tag-list">
+        {{ utils::format_date(date=page.date) }}
+        :: <a href="{{ page.permalink }}">{{ page.title }}</a>
+        {# Disable to avoid clutter
+        :: {{ "{" }}
+        {%- for cat in page.taxonomies["categories"] -%}
+          {%- if loop.last -%}
+            <a href="{%- set _cat = get_taxonomy_url(kind="categories", name=cat) -%}{{ _cat }}">{{ cat }}</a>
+          {%- elif loop.first -%}
+            <a href="{%- set _cat = get_taxonomy_url(kind="categories", name=cat) -%}{{ _cat }}">{{ cat }}</a>,&nbsp;
+          {%- else -%}
+            <a href="{%- set _cat = get_taxonomy_url(kind="categories", name=cat) -%}{{ _cat }}">{{ cat }}</a>,
+            {%- endif -%}
+        {% endfor %}{{ "}" }}
+        #}
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endblock -%}

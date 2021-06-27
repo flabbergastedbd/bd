@@ -1,0 +1,8 @@
+{% macro show(title, link, description) %}
+  <h2 class="title">
+    <a href="{{ link  }}">{{ title }}</a>
+  </h2>
+  {%- if description -%}
+  <span class="is-subtitle">{{ description }}</span><br/>
+  {%- endif -%}
+{% endmacro %}

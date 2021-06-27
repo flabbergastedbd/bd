@@ -1,0 +1,78 @@
+{% import "macros/head.html" as head -%}
+{% import "macros/header.html" as header -%}
+{% import "macros/title.html" as title -%}
+{% import "macros/lists.html" as lists -%}
+{% import "macros/utils.html" as utils -%}
+{% import "macros/pages.html" as pages -%}
+{% import "macros/social.html" as social -%}
+{% import "macros/menu.html" as menu -%}
+{% import "macros/pagination.html" as pagination -%}
+{% import "macros/footer.html" as footer -%}
+
+<!DOCTYPE html>
+<html lang="{{ config.default_language }}">
+    <head>
+        {%- block title -%}
+          <title>{{ config.title }}</title>
+        {%- endblock title -%}
+
+        {%- block meta -%}
+            {{ head::meta() }}
+        {%- endblock general_meta -%}
+
+        {%- block og_preview -%}
+            {{ social::og_preview() }}
+        {%- endblock og_preview -%}
+
+        {%- block css -%}
+            {{ head::styling() }}
+        {%- endblock css -%}
+
+        {%- block js -%}
+            {{ head::scripting() }}
+        {%- endblock css -%}
+
+        {%- block favicon -%}
+            {{ head::favicon() }}
+        {%- endblock favicon -%}
+
+        {%- block rss -%}
+            {{ head::rss() }}
+        {%- endblock rss -%}
+
+    </head>
+    <body>
+      <section class="container">
+        <div class="content has-text-centered">
+          {%- block header -%}
+              {{ header::header() }}
+          {%- endblock header -%}
+        </div>
+      </section>
+
+      <section class="container">
+          <div class="content has-text-justified">
+            <div class="box">
+              {%-  block main -%}{#- Section page with description -#}
+                {{ title::show(title=section.title, link=section.permalink, description=section.description) }}
+                <hr/>
+                {{ section.content | safe }}
+              {%- endblock main -%}
+            </div>
+          </div>
+      </section>
+
+      <br/>
+      <section class="block">
+        {%- block footer -%}
+          <footer class="container">
+            <div class="content has-text-centered">
+              {%- block copyright -%}
+                {{ footer::copyright() }}
+              {%- endblock copyright -%}
+            </div>
+          </footer>
+        {%- endblock footer -%}
+      </section>
+    </body>
+</html>

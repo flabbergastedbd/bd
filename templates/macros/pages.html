@@ -1,0 +1,51 @@
+{% macro meta(page, author) %}
+  <div class="block">
+    <span class="has-text-weight-light">
+        {%- if page.date -%}
+            {{ page.date | date(format="%Y-%m-%d") }}
+            {# end of page.date if-check #}
+        {%- endif -%}
+    </span>
+
+    {{  pages::taxonomies(taxonomy=page.taxonomies,
+        show_categories=config.extra.show_categories,
+        show_tags=config.extra.show_tags) }}
+  </div>
+{% endmacro meta %}
+
+{% macro reading_time(page) %}
+  <span>⏳ {{ page.reading_time }} min read</span>
+{% endmacro %}
+
+{% macro taxonomies(taxonomy, show_categories, show_tags) %}
+    {% if show_categories -%}
+      {% if taxonomy.categories -%}
+        {{ pages::categories(categories=taxonomy.categories) }}
+      {% endif -%}
+    {% endif -%}
+
+    {% if show_tags -%}
+      {% if taxonomy.tags -%}
+        {{ pages::tags(tags=taxonomy.tags) }}
+      {% endif -%}
+    {% endif -%}
+{% endmacro taxonomies %}
+
+{% macro categories(categories) %}
+    :: {
+    {%- for cat in categories -%}
+        {%- if loop.last -%}
+            <a href="{{ get_taxonomy_url(kind="categories", name=cat ) }}">{{ cat }}</a>
+        {%- else -%}
+            <a href="{{ get_taxonomy_url(kind="categories", name=cat ) }}">{{ cat }}</a>,
+        {%- endif -%}
+    {%- endfor -%}}
+{% endmacro categories %}
+
+{% macro tags(tags) %}
+    ::
+    {% for tag in tags -%}
+        #<a href="{{get_taxonomy_url(kind="tags", name=tag )}}">{{ tag }}</a>
+        {# end of tags for-loop #}
+    {% endfor -%}
+{% endmacro tags %}

@@ -1,0 +1,13 @@
+{% extends "index.html" -%}
+
+{%- block title %}
+  <title>{{ section.title }}</title>
+{%- endblock title -%}
+
+{%- block main -%}
+  {{ title::show(title=section.title, link=section.permalink, description=section.description) }}
+  <hr/>
+  {{ lists::list_pages() }}
+  <hr/>
+  {{ pagination::paginate() }}
+{%- endblock main -%}

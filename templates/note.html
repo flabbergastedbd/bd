@@ -1,0 +1,10 @@
+{% extends "page.html" -%}
+
+{# Hide navbar #}
+{%- block header %}{%- endblock %}
+
+{%- block page_title -%}
+  <h2>
+    <a href="{{ page.permalink  }}">{{ page.title }}</a>
+  </h2>
+{%- endblock -%}

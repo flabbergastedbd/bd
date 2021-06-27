@@ -1,0 +1,17 @@
+{% macro list_pages() %}
+<div class="container">
+{%- if paginator.pages -%}
+  {%- for page in paginator.pages -%}
+  <div class="box">
+      <h4 class="is-4"><a href="{{ page.permalink }}">{{ page.title }}</a></h4>
+      <h6 class="subitle is-6 has-text-weight-light">{{ pages::meta(page=page, author=config.extra.show_author) }}</h6>
+      <div class="block">
+        {%  if page.description -%}
+          {{ page.description }} <a href="{{ page.permalink }}">Read Further →</a>
+        {% endif -%}
+      </div>
+  </div>
+  {%- endfor -%}
+{%- endif -%}
+</div>
+{% endmacro list_pages %}

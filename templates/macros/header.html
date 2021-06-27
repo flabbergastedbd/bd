@@ -1,0 +1,29 @@
+{% macro header() %}
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item logo-text" href="{% if config.extra.logo_link %}{{ config.extra.logo_link }}{% else %}{{ config.base_url }}{% endif %}">
+      {{config.extra.logo_text}}
+    </a>
+
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="navMenu">
+    <div class="navbar-start">
+      {%- for menu_item in config.extra.main_menu -%}
+      <a class="navbar-item is-hoverable" href="{{ get_url(path=menu_item.url) }}">{{ menu_item.name }}</a>
+      {% endfor -%}
+    </div>
+
+    <div class="navbar-end">
+      {%- for menu_item in config.extra.social_links -%}
+      <a class="navbar-item is-hoverable" href="{{ menu_item.link }}"><i class="fab fa-{{ menu_item.brand }}"></i></a>
+      {% endfor -%}
+    </div>
+  </div>
+</nav>
+{% endmacro header %}

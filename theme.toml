@@ -1,0 +1,24 @@
+name = "bd"
+description = "A theme for use at tunnelshade.in"
+license = "MIT"
+homepage = "https://github.com/tunnelshade/bd"
+# The minimum version of Zola required
+min_version = "0.8.0"
+# An optional live demo URL
+demo = "https://tunnelshade.in/"
+
+# Any variable there can be overriden in the end user `config.toml`
+# You don't need to prefix variables by the theme name but as this will
+# be merged with user data, some kind of prefix or nesting is preferable
+# Use snake_casing to be consistent with the rest of Zola
+[extra]
+
+# The theme author info: you!
+[author]
+name = "BD"
+homepage = "https://github.com/tunnelshade"
+
+[original]
+name = "elias julian marko garcia"
+homepage = "https://github.com/ejmg"
+repo = "https://github.com/ejmg/zerm"

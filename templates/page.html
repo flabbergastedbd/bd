@@ -1,0 +1,47 @@
+{% extends "index.html" -%}
+
+{%- block title %}
+  {%- if page and page.title -%}
+    <title>{{ page.title }}</title>
+  {%- endif -%}
+{%- endblock title -%}
+
+{%- block main -%}
+<div class="block">
+  {%- block page_title -%}
+    {{ title::show(title=page.title, link=page.permalink, description=false) }}
+    {{ pages::reading_time(page=page) }}
+  {%- endblock -%}
+</div>
+<hr/>
+<div class="block">
+  {%- block page_content -%}
+    {% if page.toc and page.toc | length > 3 %}{#- Only show toc if top headings > 3 #}
+      <ul>
+      {% for h1 in page.toc %}
+        <li>
+          <a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+          {% if h1.children %}
+            <ul>
+              {% for h2 in h1.children %}
+                <li><a href="{{h2.permalink | safe}}">{{ h2.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+      <hr/>
+    {% endif %}
+    {{ page.content | safe }}
+  {%- endblock -%}
+</div>
+<hr/>
+<div class="block">
+  {%- block page_footer -%}
+    {%- if page -%}
+      {{ pages::meta(page=page, author=config.extra.show_author) }}
+    {%- endif -%}
+  {%- endblock -%}
+</div>
+{% endblock %}

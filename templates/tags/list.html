@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+{%- block page_title -%}
+  <h1>#tags</h1>
+{%- endblock -%}
+
+{%- block page_content -%}
+  <ul>
+    {%- for term in terms -%}
+      <li class="tag-list">
+        <a href="{{ get_taxonomy_url(kind="tags", name=term.name) }}">#{{ term.name }}</a>
+        ({{ term.pages | length }} post{{ term.pages | length | pluralize}})
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endblock -%}
