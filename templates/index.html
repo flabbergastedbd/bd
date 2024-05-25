@@ -12,70 +12,71 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" data-theme="light">
 
-  <head>
-    {%- block title -%}
-    <title>{{ config.title }}</title>
-    {%- endblock title -%}
+<head>
+  {%- block title -%}
+  <title>{{ config.title }}</title>
+  {%- endblock title -%}
 
-    {%- block meta -%}
-    {{ head::meta() }}
-    {%- endblock general_meta -%}
+  {%- block meta -%}
+  {{ head::meta() }}
+  {%- endblock general_meta -%}
 
-    {%- block og_preview -%}
-    {{ social::og_preview() }}
-    {%- endblock og_preview -%}
+  {%- block og_preview -%}
+  {{ social::og_preview() }}
+  {%- endblock og_preview -%}
 
-    {%- block css -%}
-    {{ head::styling() }}
-    {%- endblock css -%}
+  {%- block css -%}
+  {{ head::styling() }}
+  {%- endblock css -%}
 
-    {%- block js -%}
-    {{ head::scripting() }}
-    {%- endblock css -%}
+  {%- block js -%}
+  {{ head::scripting() }}
+  {%- endblock css -%}
 
-    {%- block favicon -%}
-    {{ head::favicon() }}
-    {%- endblock favicon -%}
+  {%- block favicon -%}
+  {{ head::favicon() }}
+  {%- endblock favicon -%}
 
-    {%- block rss -%}
-    {{ head::rss() }}
-    {%- endblock rss -%}
+  {%- block rss -%}
+  {{ head::rss() }}
+  {%- endblock rss -%}
 
-  </head>
+</head>
 
-  <body>
-    <section class="container">
+<body>
+  <section class="container">
+    <div class="content has-text-centered">
+      {%- block header -%}
+      {{ header::header() }}
+      {%- endblock header -%}
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="content has-text-justified">
+      <div class="box">
+        {%- block main -%}{#- Section page with description -#}
+        {{ title::show(title=section.title, link=section.permalink, description=section.description) }}
+        <hr />
+        {{ section.content | safe }}
+        {%- endblock main -%}
+      </div>
+    </div>
+  </section>
+
+  <br />
+  <section class="block">
+    {%- block footer -%}
+    <footer class="container">
       <div class="content has-text-centered">
-        {%- block header -%}
-        {{ header::header() }}
-        {%- endblock header -%}
+        {%- block copyright -%}
+        {{ footer::copyright() }}
+        {%- endblock copyright -%}
       </div>
-    </section>
+    </footer>
+    {%- endblock footer -%}
+  </section>
+</body>
 
-    <section class="container">
-      <div class="content has-text-justified">
-        <div class="box">
-          {%- block main -%}{#- Section page with description -#}
-          {{ title::show(title=section.title, link=section.permalink, description=section.description) }}
-          <hr />
-          {{ section.content | safe }}
-          {%- endblock main -%}
-        </div>
-      </div>
-    </section>
-
-    <br />
-    <section class="block">
-      {%- block footer -%}
-      <footer class="container">
-        <div class="content has-text-centered">
-          {%- block copyright -%}
-          {{ footer::copyright() }}
-          {%- endblock copyright -%}
-        </div>
-      </footer>
-      {%- endblock footer -%}
-    </section>
-  </body>
 
 </html>
