@@ -1,0 +1,40 @@
+// Set your brand colors
+$color-black: #000000; // Black
+$color-medium-brown: #997969; // Medium brown
+$color-light-beige: #eddfca; // Light beige
+$color-teal-blue: #189593; // Teal blue
+$color-dark-brown: #71493a; // Dark brown
+$color-light-brown: #c6a995; // Light brown
+$color-reddish-brown: #a45630; // Reddish brown
+$color-dark-teal: #195d59; // Dark teal
+$color-bright-teal: #34e0df; // Bright teal
+$color-very-dark-brown: #422216; // Very dark brown
+
+// Path to Bulma's sass folder
+@use "bulma/sass" with ($background: $color-light-beige,
+	$text: $color-very-dark-brown,
+	$link: $color-bright-teal,
+	$primary: $color-teal-blue,
+);
+
+// CSS Framework
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css);
+
+// Variables
+$fa-font-path: "webfonts";
+
+@font-face {
+	font-family: 'Lobster Two';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url(/webfonts/lobster-two.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// Styling
+.logo-text {
+	font-size: 40px;
+	font-family: 'Lobster Two', cursive;
+}

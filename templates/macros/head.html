@@ -1,24 +1,27 @@
 {% macro styling() %}
-  <link rel="stylesheet" href="{{ get_url(path='css/style.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='style.css') }}">
 {% endmacro styling %}
 
 {% macro scripting() %}
-  <script src="{{ get_url(path='js/site.js') }}"></script>
+<script src="{{ get_url(path='js/site.js') }}"></script>
+<script src="{{ get_url(path='search_index.en.js') }}"></script>
+<script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
 {% endmacro scripting %}
 
 {% macro favicon() %}
-  {%- if config.extra.favicon is defined -%}
-    <link rel="shortcut icon" href="{{ get_url(path=config.extra.favicon) }}" type="image/x-icon" />
-  {%- endif -%}
+{%- if config.extra.favicon is defined -%}
+<link rel="shortcut icon" href="{{ get_url(path=config.extra.favicon) }}" type="image/x-icon" />
+{%- endif -%}
 {% endmacro favicon %}
 
 {% macro rss() %}
-  {%- if config.generate_feed -%}
-    <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
-  {%- endif -%}
+{%- if config.generate_feed -%}
+<link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS" href="{{ get_url(path=" rss.xml",
+  trailing_slash=false) }}">
+{%- endif -%}
 {% endmacro rss %}
 
 {% macro meta() %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% endmacro general_meta %}

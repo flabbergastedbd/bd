@@ -1,8 +1,12 @@
 {% macro show(title, link, description) %}
-  <h2 class="title">
-    <a href="{{ link  }}">{{ title }}</a>
-  </h2>
-  {%- if description -%}
-  <span class="is-subtitle">{{ description }}</span><br/>
-  {%- endif -%}
+<section class="hero">
+  <div class="hero-body has-text-centered">
+    <p class="title">
+      {{ title }}
+    </p>
+    {%- if description -%}
+    <p class="subtitle">{{ description }}</p>
+    {%- endif -%}
+  </div>
+</section>
 {% endmacro %}

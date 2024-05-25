@@ -1,11 +1,15 @@
 {% macro header() %}
-<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item logo-text" href="{% if config.extra.logo_link %}{{ config.extra.logo_link }}{% else %}{{ config.base_url }}{% endif %}">
-      {{config.extra.logo_text}}
+    <a class="navbar-item"
+      href="{% if config.extra.logo_link %}{{ config.extra.logo_link }}{% else %}{{ config.base_url }}{% endif %}">
+      <figure class="image">
+        <img class="is-rounded" src="{{ get_url(path=config.extra.favicon) }}" />
+      </figure>
     </a>
 
     <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -17,6 +21,13 @@
       {%- for menu_item in config.extra.main_menu -%}
       <a class="navbar-item is-hoverable" href="{{ get_url(path=menu_item.url) }}">{{ menu_item.name }}</a>
       {% endfor -%}
+      <div class="search-container">
+        <input id="search" type="search" placeholder="🔎 Search the docs">
+
+        <div class="search-results">
+          <div class="search-results__items"></div>
+        </div>
+      </div>
     </div>
 
     <div class="navbar-end">
