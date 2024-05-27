@@ -1,6 +1,8 @@
 {% extends "index.html" -%}
 
 {%- block main -%}
+<script src="{{ get_url(path='js/search.js') }}"></script>
+<script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
 <div class="fixed-grid has-1-cols">
   <div class="grid">
     <div class="cell is-centered">

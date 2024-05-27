@@ -3,8 +3,8 @@
   <div class="navbar-brand">
     <a class="navbar-item"
       href="{% if config.extra.logo_link %}{{ config.extra.logo_link }}{% else %}{{ config.base_url }}{% endif %}">
-      <figure class="image">
-        <img class="is-rounded" src="{{ get_url(path=config.extra.favicon) }}" />
+      <figure class="image is-rounded is-32x32">
+        <img src="{{ get_url(path=config.extra.favicon) }}" />
       </figure>
     </a>
 
