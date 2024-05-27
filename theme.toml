@@ -12,6 +12,8 @@ demo = "https://flabbergasted.in/"
 # be merged with user data, some kind of prefix or nesting is preferable
 # Use snake_casing to be consistent with the rest of Zola
 [extra]
+favicon = "logo.png"
+logo_img = "logo.png"
 
 # The theme author info: you!
 [author]

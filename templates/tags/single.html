@@ -1,20 +1,23 @@
 {%- extends "page.html"-%}
 
 {%- block page_title -%}
-<h1 class="title">tags ∋ #{{ term.name }} ({{ term.pages | length }} post{{ term.pages | length | pluralize}})</h1>
+{%- set tags = get_taxonomy(kind='tags') -%}
+<h1 class="title"><a href="{{ tags.permalink }}">tags</a> ∋ #{{ term.name }} ({{ term.pages | length }} post{{
+  term.pages | length | pluralize}})</h1>
 {%- endblock -%}
 
 {%- block page_content -%}
-  <ul>
-    {%- for page in term.pages -%}
-      <li class="tag-list">
-        {{ utils::format_date(date=page.date) }}
-        :: <a href="{{ page.permalink }}">{{ page.title }}</a>
-        {# :: <span class="has-text-weight-light has-text-black">
-          {%- for tag in page.taxonomies["tags"] -%} #<a href="{%- set _tag = get_taxonomy_url(kind="tags", name=tag) -%}{{ _tag }}">{{ tag }}</a> {% endfor %}
-          </span>
-        #}
-      </li>
-    {%- endfor -%}
-  </ul>
+<ul>
+  {%- for page in term.pages -%}
+  <li class="tag-list">
+    {{ utils::format_date(date=page.date) }}
+    :: <a href="{{ page.permalink }}">{{ page.title }}</a>
+    {# :: <span class="has-text-weight-light has-text-black">
+      {%- for tag in page.taxonomies["tags"] -%} #<a href="{%- set _tag = get_taxonomy_url(kind=" tags", name=tag) -%}{{
+        _tag }}">{{ tag }}</a> {% endfor %}
+    </span>
+    #}
+  </li>
+  {%- endfor -%}
+</ul>
 {%- endblock -%}

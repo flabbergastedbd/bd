@@ -1,16 +1,16 @@
 {% extends "page.html" %}
 
 {%- block page_title -%}
-  <h1>{categories}</h1>
+<h1>Categories</h1>
 {%- endblock -%}
 
 {%- block page_content -%}
-  <ul>
-    {%- for cat in terms -%}
-      <li class="tag-list">
-        <a href="{{ get_taxonomy_url(kind="categories", name=cat.name) }}">{{ "{" }}{{ cat.name }}{{ "}" }}</a>
-        ({{ cat.pages | length }} post{{ cat.pages | length | pluralize }})
-      </li>
-    {%- endfor -%}
-  </ul>
+<ul>
+  {%- for cat in terms -%}
+  <li class="tag-list">
+    <a href="{{ get_taxonomy_url(kind='categories', name=cat.name) }}">{{ cat.name }}</a>
+    ({{ cat.pages | length }} post{{ cat.pages | length | pluralize }})
+  </li>
+  {%- endfor -%}
+</ul>
 {%- endblock main -%}

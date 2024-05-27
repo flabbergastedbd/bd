@@ -4,11 +4,11 @@
 <div class="columns">
   <div class="column is-three-quarters">
     <div class="block">
-    {{ page.content | safe }}
+      {{ page.content | safe }}
     </div>
   </div>
-  <div class="column">
-    <img src="{{ page.extra.profile_image }}"/>
-  </div>
+  <figure class="column is-rounded">
+    <img src="{{ get_url(path=config.extra.logo_img) }}" />
+  </figure>
 </div>
 {%- endblock -%}
