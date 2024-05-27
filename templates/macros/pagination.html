@@ -1,34 +1,34 @@
 {% macro paginate() %}
-  <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-    {# Amazing pagination logic #}
-    {%- if paginator.first %}
-    <ul class="pagination-list">
-      {%- if paginator.current_index != 1 %}
-      <li><a class="pagination-link" href="{{ paginator.first }}">1</a></li>
-      {%- endif %}
-
-      {%- if paginator.current_index - 2 > 1 %}
-      <li><a class="pagination-link">&hellip;</a></li>
-      {%- endif %}
-
-      {%- if paginator.current_index - 1 > 1 %}
-      <li><a class="pagination-link" href="{{ paginator.previous }}">{{ paginator.current_index - 1 }}</a></li>
-      {%- endif %}
-
-      <li><a class="pagination-link is-current">{{ paginator.current_index }}</a></li>
-
-      {%- if paginator.current_index + 1 < paginator.number_pagers %}
-      <li><a class="pagination-link" href="{{ paginator.next }}">{{ paginator.current_index + 1 }}</a></li>
-      {%- endif %}
-
-      {%- if paginator.current_index + 2 < paginator.number_pagers %}
-      <li><a class="pagination-link">&hellip;</a></li>
-      {%- endif %}
-
-      {%- if paginator.current_index != paginator.number_pagers %}
-      <li><a class="pagination-link" aria-label="Goto last page" href="{{ paginator.last }}">{{ paginator.number_pagers }}</a></li>
-      {%- endif -%}
-    </ul>
+<nav class="block pagination is-centered is-medium" role="navigation" aria-label="pagination">
+  {# Amazing pagination logic #}
+  {%- if paginator.first %}
+  <ul class="pagination-list">
+    {%- if paginator.current_index != 1 %}
+    <li><a class="pagination-link" href="{{ paginator.first }}">1</a></li>
     {%- endif %}
-  </nav>
+
+    {%- if paginator.current_index - 2 > 1 %}
+    <li><a class="pagination-link">&hellip;</a></li>
+    {%- endif %}
+
+    {%- if paginator.current_index - 1 > 1 %}
+    <li><a class="pagination-link" href="{{ paginator.previous }}">{{ paginator.current_index - 1 }}</a></li>
+    {%- endif %}
+
+    <li><a class="pagination-link is-current">{{ paginator.current_index }}</a></li>
+
+    {%- if paginator.current_index + 1 < paginator.number_pagers %} <li><a class="pagination-link"
+        href="{{ paginator.next }}">{{ paginator.current_index + 1 }}</a></li>
+      {%- endif %}
+
+      {%- if paginator.current_index + 2 < paginator.number_pagers %} <li><a class="pagination-link">&hellip;</a></li>
+        {%- endif %}
+
+        {%- if paginator.current_index != paginator.number_pagers %}
+        <li><a class="pagination-link" aria-label="Goto last page" href="{{ paginator.last }}">{{
+            paginator.number_pagers }}</a></li>
+        {%- endif -%}
+  </ul>
+  {%- endif %}
+</nav>
 {% endmacro paginate %}
