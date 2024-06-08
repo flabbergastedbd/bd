@@ -12,7 +12,7 @@ $color-very-dark-brown: #422216; // Very dark brown
 
 // Path to Bulma's sass folder
 @use "bulma/sass" with ($background: $color-light-beige,
-	$text: $color-very-dark-brown,
+	$text: $color-black,
 	$link: $color-bright-teal,
 	$primary: $color-teal-blue,
 	$pagination-current-background-color: $color-teal-blue,
@@ -39,4 +39,8 @@ $fa-font-path: "webfonts";
 .logo-text {
 	font-size: 40px;
 	font-family: 'Lobster Two', cursive;
+}
+
+section.main-content a {
+	font-weight: 500; // To highlight links visually
 }
