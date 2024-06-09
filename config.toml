@@ -24,6 +24,7 @@ anchors = "off"
 [extra]
 # Mention classes from font-awesome brands, without the fa- prefix
 logo_text = "BD"
+timezone = "Asia/Kolkata"
 main_menu = []
 social_links = [
   {brand="twitter", link="https://twitter.com/tunnelshade_"}

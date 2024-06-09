@@ -1,0 +1,94 @@
+{% extends "page.html" -%}
+
+{%- block custom_head -%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"
+  integrity="sha512-YUCXQC02zPSW9WkwgwfYQo7wlQpZ96jQO32Ira5MMl+TFcWR26w4DqmkePGohJNqJdWb2ugB67N5L0X4+72bBA=="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bulma.js"
+  integrity="sha512-CCqeG7dITYs+rRj6Dck1HTlwe0//+HJkjOJ+JPQgzOXYDvqh8u3pcGdJMItLg38TkUs5QawBjaYkdQUxp8ucjA=="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bulma.css"
+  integrity="sha512-t6saKXksvQR+OFbAamMANxqIULuYSHrr1q41mHcWm3v74s8Pv6AXbiaeSHrcvlgzqitWtLAR/gQ7YDN/GEHYqg=="
+  crossorigin="anonymous">
+<script>
+  DataTable.ext.classes.search.input = 'input is-medium';
+  var bookmarks_table = document.addEventListener("DOMContentLoaded", function () {
+    $("#bookmarks").DataTable({
+      pageLength: 10,
+    });
+  })
+</script>
+{%- endblock -%}
+
+{%- block page_content -%}
+{%- if config.extra.pinboard_feeds_url -%}
+{% set bookmarks = load_data(url=config.extra.pinboard_feeds_url, format="json") %}
+<div class="fixed-grid has-1-cols">
+  <div class="grid">
+    <div class="cell content">
+      <div class="dropdown is-hoverable is-right is-pulled-right" id="disclaimer">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="disclaimer-dropdown">
+            <span>Disclaimer</span>
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="disclaimer-dropdown" role="menu">
+          <div class="dropdown-content has-text-justified is-rounded">
+            <div class="dropdown-item">
+              <ul>
+                <li><strong>Non-Liability</strong>: The links shared are provided for informational purposes only. We do
+                  not
+                  assume any
+                  responsibility or liability for the accuracy, completeness, or reliability of the content found on
+                  these
+                  external websites. Users are encouraged to independently verify any information obtained from these
+                  links.
+                </li>
+                <li><strong>Non-Endorsement</strong>: The inclusion of any link does not imply endorsement or
+                  recommendation
+                  of the views,
+                  products, or services found on the linked websites. We do not endorse any content, advertisers,
+                  products,
+                  or
+                  other materials on or available from these sites.</li>
+                <li><strong>Use at Your Own Risk</strong>: Accessing and using the links provided is at the user's own
+                  risk.
+                  We shall not be
+                  held liable for any damages or losses incurred as a result of using or relying on any content, goods,
+                  or
+                  services available on or through these links.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cell has-text-justified">
+      <table class="table is-fullwidth is-striped" id="bookmarks">
+        <thead>
+          <th>Date</th>
+          <th>URL</th>
+          <th>Tags</th>
+        </thead>
+        <tbody>
+          {%- for bookmark in bookmarks -%}
+          <tr>
+            <td style="white-space: nowrap">{{ bookmark.dt | date(format="%Y-%m-%d", timezone=config.extra.timezone) }}
+            </td>
+            <td><a href="{{ bookmark.u }}" rel="no-referrer" target="_blank">{{ bookmark.d }}</a></td>
+            <td>{{ bookmark.t }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

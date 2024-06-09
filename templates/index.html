@@ -31,7 +31,7 @@
 
   {%- block js -%}
   {{ head::scripting() }}
-  {%- endblock css -%}
+  {%- endblock js -%}
 
   {%- block favicon -%}
   {{ head::favicon() }}
@@ -41,6 +41,8 @@
   {{ head::rss() }}
   {%- endblock rss -%}
 
+  {%- block custom_head -%}
+  {%- endblock custom_head -%}
 </head>
 
 <body>

@@ -44,3 +44,7 @@ $fa-font-path: "webfonts";
 section.main-content a {
 	font-weight: 500; // To highlight links visually
 }
+
+div#disclaimer {
+	--bulma-dropdown-menu-min-width: 40em;
+}
