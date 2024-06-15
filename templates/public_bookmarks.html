@@ -18,7 +18,10 @@
   var bookmarks_table = document.addEventListener("DOMContentLoaded", function () {
     $("#bookmarks").DataTable({
       pageLength: 10,
-      sscrollX: '100%'
+      sscrollX: '100%',
+      order: [
+        [0, 'desc']
+      ]
     });
   })
 </script>
