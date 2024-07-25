@@ -7,10 +7,8 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-highlight_code = true
-
-generate_feed = false
-feed_filename = "rss.xml"
+generate_feeds = false
+feed_filenames = ["rss.xml"]
 
 [markdown]
 # Whether to do syntax highlighting
@@ -24,6 +22,7 @@ anchors = "off"
 [extra]
 # Mention classes from font-awesome brands, without the fa- prefix
 logo_text = "BD"
+favicon = "logo.png"
 timezone = "Asia/Kolkata"
 main_menu = []
 social_links = [

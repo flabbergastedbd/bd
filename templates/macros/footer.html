@@ -1,6 +1,6 @@
 {% macro copyright() %}
-    <span>
-      © {{ now() | date(format="%Y") }} &ThinSpace;
-      {%- if config.extra.author -%}{{ config.extra.author | safe }}{%- endif -%}
-    </span>
+<span>
+  © {{ now() | date(format="%Y") }} &ThinSpace;
+  {%- if config.extra.author -%}{{ config.extra.author | safe }}{%- endif -%}
+</span>
 {% endmacro copyright %}
